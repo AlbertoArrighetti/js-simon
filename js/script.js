@@ -21,16 +21,16 @@ function updatedCountdown() {
     // dividendo per 1'000 ottengo i millisecondi che mi rimangono in questo minuto
 
     // con padstart aggiungo lo 0 davanti ai numeri < 10
-    const seconds = Math.floor((timeRemaining % 60000) / 1000).toFixed(0).padStart(2, "0");
+    let seconds = Math.floor((timeRemaining % 60000) / 1000).toFixed(0).padStart(2, "0");
     
     // converto i milisecondi in minuti 
-    const minutes = Math.floor((timeRemaining % 3600000) / 60000).toFixed(0).padStart(2, "0");
+    let minutes = Math.floor((timeRemaining % 3600000) / 60000).toFixed(0).padStart(2, "0");
 
     // converto i milisecondi in ore 
-    const hours = Math.floor((timeRemaining % 86400000) / 3600000);
+    let hours = Math.floor((timeRemaining % 86400000) / 3600000).toFixed(0).padStart(2, "0");
     
     // converto i millisecondi in giorni
-    const days = Math.floor(timeRemaining / 86400000);
+    let days = Math.floor(timeRemaining / 86400000).toFixed(0).padStart(2, "0");
 
     // controllo che il timer non sia sotto lo zero 
     if (timeRemaining < 0) {
