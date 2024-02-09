@@ -32,20 +32,21 @@ function updatedCountdown() {
     // converto i millisecondi in giorni
     const days = Math.floor(timeRemaining / 86400000);
 
+    // controllo che il timer non sia sotto lo zero 
+    if (timeRemaining < 0) {
+        seconds = "00";
+        minutes = "00";
+        hours = "00";
+        days = "00";
+    }
 
     
     // risultato in pagina 
-    document.getElementById("time_remaining").innerHTML = `
-    ${days} giorni, ${hours} : ${minutes} : ${seconds}`
+    document.getElementById("time_remaining").innerHTML = `${days} giorni, ${hours} : ${minutes} : ${seconds}`
 
 }
 
 
 // con setInterval aggiorno ogni secondo il tempo rimanente 
 setInterval(updatedCountdown, 1000);
-
-
-
-
-
 
