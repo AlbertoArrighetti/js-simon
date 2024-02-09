@@ -4,9 +4,7 @@
 
 // setto la data a lunedì mattina con new Date
 // 2024 = anno, 1 = Febbraio (i mesi iniziano da i = 0), 12 = giorno, 9 = ora, minuti e secondi 
-const targetDate = new Date (2024, 1, 12, 9, 0, 0);
-
-
+let targetDate = new Date (2024, 1, 12, 9, 0, 0);
 
 
 // Per poter usare la timing function creo una funzione
@@ -21,6 +19,7 @@ function updatedCountdown() {
     // converto i milisecondi in secondi 
     // 60'000 = numero di millesecondi in un minuto
     // dividendo per 1'000 ottengo i millisecondi che mi rimangono in questo minuto
+
     // con padstart aggiungo lo 0 davanti ai numeri < 10
     const seconds = Math.floor((timeRemaining % 60000) / 1000).toFixed(0).padStart(2, "0");
     
@@ -34,9 +33,10 @@ function updatedCountdown() {
     const days = Math.floor(timeRemaining / 86400000);
 
 
-
-    // log 
-    console.log(days, hours, minutes, seconds);
+    
+    // risultato in pagina 
+    document.getElementById("time_remaining").innerHTML = `
+    ${days} giorni, ${hours} : ${minutes} : ${seconds}`
 
 }
 
@@ -48,4 +48,4 @@ setInterval(updatedCountdown, 1000);
 
 
 
-console.log("lunedì ", targetDate);
+
