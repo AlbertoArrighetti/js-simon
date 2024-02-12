@@ -4,7 +4,7 @@
 
 // setto la data a lunedì mattina con new Date
 // 2024 = anno, 1 = Febbraio (i mesi iniziano da i = 0), 12 = giorno, 9 = ora, minuti e secondi 
-let targetDate = new Date (2024, 1, 12, 9, 0, 0);
+let targetDate = new Date (2024, 1, 12, 11, 0, 0);
 
 
 // Per poter usare la timing function creo una funzione
@@ -13,24 +13,18 @@ function updatedCountdown() {
     const timeRemaining = targetDate - new Date();
     
 
-
-
-    
     // converto i milisecondi in secondi 
-    // 60'000 = numero di millesecondi in un minuto
-    // dividendo per 1'000 ottengo i millisecondi che mi rimangono in questo minuto
-
     // con padstart aggiungo lo 0 davanti ai numeri < 10
-    let seconds = Math.floor((timeRemaining % 60000) / 1000).toFixed(0).padStart(2, "0");
+    let seconds = Math.floor((timeRemaining / 1000) % 60).toFixed(0).padStart(2, "0");
     
     // converto i milisecondi in minuti 
-    let minutes = Math.floor((timeRemaining % 3600000) / 60000).toFixed(0).padStart(2, "0");
+    let minutes = Math.floor((timeRemaining / (1000 * 60)) % 60).toFixed(0).padStart(2, "0");
 
     // converto i milisecondi in ore 
-    let hours = Math.floor((timeRemaining % 86400000) / 3600000).toFixed(0).padStart(2, "0");
+    let hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24).toFixed(0).padStart(2, "0");
     
     // converto i millisecondi in giorni
-    let days = Math.floor(timeRemaining / 86400000).toFixed(0).padStart(2, "0");
+    let days = Math.floor((timeRemaining / (1000 * 60 * 60 * 24)) % 365).toFixed(0).padStart(2, "0");
 
     // controllo che il timer non sia sotto lo zero 
     if (timeRemaining < 0) {
